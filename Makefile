@@ -1,17 +1,17 @@
-tests: main.o Node.o LinkedList.o test.o 
-	g++ -std=c++11 -g main.o Node.o LinkedList.o test.o -o tests
-	
-main.o: main.cpp
-	g++ -std=c++11 -g -c main.cpp
-	
-Node.o: Node.hpp Node.h
-	g++ -std=c++11 -g -c Node.hpp
+.PHONY: Tests main.o test.o clean
 
-LinkedList.o: LinkedList.hpp LinkedList.h 
-	g++ -std=c++11 -g -c LinkedList.hpp
+Tests: main.o test.o
+	g++ -g -Wall -std=c++11 main.o test.o -o Tests
 
-test.o: test.cpp test.h
-	g++ -std=c++ll -g -c test.cpp
 
-clean: rm *.o main
-	clean done
+main.o: main.cpp LinkedList.h Node.h test.h
+	g++ -g -Wall -std=c++11 -c main.cpp
+
+
+test.o: test.h test.cpp
+	g++ -g -Wall -std=c++11 -c Test.cpp
+
+#force returning true to prevent the default make from
+#	haulting when .o files aren't present
+clean:
+	rm *.o *.*~ Tests || true
