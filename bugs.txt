@@ -1,0 +1,10 @@
+BUGS:
+
+1. m_size is initially set to 1. This probably accounts for both isEmpty() and size() not working.
+  -However, two separate bugs could be causing isEmpty() and size() not to function correctly, but considering that isEmpty() usually relies upon m_size,
+  I do not think this is the case. 
+2. addBack() only adds the first element you pass into it to the list. When you try to add different elements, it just adds copies of the first element.
+3. removeFront() removes the back of the list, not the front of the list.
+4. Not entirely sure if this is a bug, but it was behavior I wasn't expecting, if you enter in a value that isn't the same as type as your type T for the
+  linked list, it will convert that type to your type T and add it to the list. For instance, in a linked list of ints, if a char is added to the linked list
+  the char will be converted into its ascii value and added to the list.
